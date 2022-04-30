@@ -12,6 +12,19 @@
         return BASE_URL."/Assets";
     }
     
+    //Funciones para poder conectar HEADER FOOTER Y NAV
+    function headerAdmin($data="")
+    {
+        $view_header = "Views/Template/header_admin.php";
+        require_once($view_header);
+    }
+
+    function footerAdmin($data="")
+    {
+        $view_footer = "Views/Template/footer_admin.php";
+        require_once($view_footer);
+    }
+
 	//Mostrar información formateada para imprimir arrays
 	function dep($data)
     {

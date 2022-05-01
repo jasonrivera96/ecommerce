@@ -3,11 +3,12 @@
 <script src="<?= media(); ?>/js/popper.min.js"></script>
 <script src="<?= media(); ?>/js/bootstrap.min.js"></script>
 <script src="<?= media(); ?>/js/main.js"></script>
+<script src="<?= media(); ?>/js/functions_admin.js"></script>
 <!-- The javascript plugin to display page loading on top-->
 <script src="<?= media(); ?>/js/plugins/pace.min.js"></script>
 <!-- Page specific javascripts-->
 <!-- Google analytics script-->
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     if (document.location.hostname == 'pratikborsadiya.in') {
         (function(i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
@@ -23,7 +24,7 @@
         ga('create', 'UA-72504830-1', 'auto');
         ga('send', 'pageview');
     }
-</script>
+</script> -->
 </body>
 
 </html>

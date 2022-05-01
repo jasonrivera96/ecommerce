@@ -47,6 +47,6 @@
         <li><a class="treeview-item" href="page-error.html"><i class="icon fa fa-circle-o"></i> Error Page</a></li>
       </ul>
     </li> -->
-    <li><a class="app-menu__item" href="<?= base_url(); ?>/logout"><i class="app-menu__icon fa fa-sign-out"></i><span class="app-menu__label">Logout</span></a></li>
+    <li><a class="app-menu__item" href="<?= base_url(); ?>/logout"><i class="app-menu__icon fa fa-sign-out"></i><span class="app-menu__label"> Cerrar Sesión</span></a></li>
   </ul>
 </aside>

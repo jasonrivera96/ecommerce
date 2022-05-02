@@ -10,8 +10,7 @@
         public function selectRoles()
         {
             $sql = "SELECT r.*
-                    FROM rol r
-                    WHERE estado != 0";
+                    FROM rol r";
             $request = $this->select_all($sql);
             return $request;
         }

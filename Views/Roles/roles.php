@@ -24,13 +24,14 @@
             <div class="tile">
                 <div class="tile-body">
                     <div class="table-responsive">
-                        <table class="table table-hover table-bordered" id="tableRoles">
+                        <table id="tableRoles" class="table table-bordered table-striped" style="margin-bottom: 10px">
                             <thead>
                                 <tr>
                                     <th>ID</th>
                                     <th>Nombre</th>
                                     <th>Descripción</th>
                                     <th>Estado</th>
+                                    <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -49,7 +50,7 @@
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalCrearRolTitle">Crear Rol</h5>
+                <h5 class="modal-title" id="modalCrearRolTitle"> <i class="fa-solid fa-square-plus"></i> Crear Rol</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -58,15 +59,15 @@
                 <form id="formRol" name="formRol">
                     <div class="form-group">
                         <label class="col-form-label" for="inputDefault">Nombre</label>
-                        <input class="form-control" id="nombreRol" nombre="nombreRol" type="text" placeholder="Nombre de Rol" require>
+                        <input class="form-control" id="nombreRol" name="nombreRol" type="text" placeholder="Nombre de Rol" required>
                     </div>
                     <div class="form-group">
                         <label class="col-form-label" for="textAreaDefault">Descripción</label>
-                        <textarea class="form-control" rows="2" id="descripcionRol" nombre="descripcionRol" placeholder=" Descripción del Rol" require></textarea>
+                        <textarea class="form-control" rows="2" id="descripcionRol" name="descripcionRol" placeholder=" Descripción del Rol" required></textarea>
                     </div>
                     <div class="form-group">
                         <label for="exampleSelect1">Estado</label>
-                        <select class="form-control" id="estadoRol" name="estadoRol" require>
+                        <select class="form-control" id="estadoRol" name="estadoRol" required>
                             <option value="1">Activo</option>
                             <option value="0">Inactivo</option>
                         </select>
@@ -83,8 +84,9 @@
 <?php footerAdmin($data); ?>
 
 <script type="text/javascript">
-    $(document).ready(function() {
 
+    $(document).ready(function() {
+    /* document.addEventListener('DOMContentLoaded', function(){ */
         var tableRoles;
 
         tableRoles = $('#tableRoles').DataTable({
@@ -132,6 +134,9 @@
                 },
                 {
                     "data": "estado"
+                },
+                {
+                    "data": "acciones"
                 }
             ],
 
@@ -141,7 +146,32 @@
             "order": []
         });
 
-        $('#tableRoles').DataTable();
+        var formRol = document.querySelector("#formRol");
+        formRol.onsubmit = function(e) {
+            e.preventDefault();
+
+            var strNombre = document.querySelector('#nombreRol').value;
+            var strDescripcion = document.querySelector('#descripcionRol').value;
+            var strEstado = document.querySelector('#estadoRol').value;
+
+            if(strNombre == '' || strDescripcion == '' || strEstado == '' ){
+                swal("Atención","Todos los campos son obligatorios.","error");
+                return false;
+            }
+
+            var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject ('Microsoft.XMLHTTP');
+            var ajaxUrl = base_url + '/Roles/setRol';
+            var formData = new FormData(formRol);
+            request.open("POST", ajaxUrl, true);
+            request.send(formData);
+            request.onreadystatechange = function(){
+                if(request.readyState == 4 && request.status == 200){
+                    console.log(request.responseText);
+                }
+            }
+        }
 
     });
+
+    $('#tableRoles').DataTable();
 </script>

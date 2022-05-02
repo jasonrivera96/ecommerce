@@ -26,7 +26,7 @@
     }
 
 	//Mostrar información formateada para imprimir arrays
-	function dep($data)
+	function imprimir($data)
     {
         $format  = print_r('<pre>');
         $format .= print_r($data);

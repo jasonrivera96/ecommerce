@@ -29,7 +29,7 @@
   </head>
   <body class="app sidebar-mini">
     <!-- Navbar-->
-    <header class="app-header"><a class="app-header__logo" href="<?= base_url(); ?>/dashboard">Ecommerce</a>
+    <header class="app-header"><a class="app-header__logo" href="<?= base_url(); ?>/Dashboard">Ecommerce</a>
       <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
       <!-- Navbar Right Menu-->
       <ul class="app-nav">
@@ -81,9 +81,9 @@
         <!-- User Menu-->
         <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
           <ul class="dropdown-menu settings-menu dropdown-menu-right">
-            <li><a class="dropdown-item" href="<?= base_url(); ?>/opciones"><i class="fa fa-cog fa-lg"></i> Ajustes</a></li>
-            <li><a class="dropdown-item" href="<?= base_url(); ?>/perfil"><i class="fa fa-user fa-lg"></i> Perfil</a></li>
-            <li><a class="dropdown-item" href="<?=base_url(); ?>/logout"><i class="fa fa-sign-out fa-lg"></i> Cerrar Sesión</a></li>
+            <li><a class="dropdown-item" href="<?= base_url(); ?>/Opciones"><i class="fa fa-cog fa-lg"></i> Ajustes</a></li>
+            <li><a class="dropdown-item" href="<?= base_url(); ?>/Perfil"><i class="fa fa-user fa-lg"></i> Perfil</a></li>
+            <li><a class="dropdown-item" href="<?=base_url(); ?>/Logout"><i class="fa fa-sign-out fa-lg"></i> Cerrar Sesión</a></li>
           </ul>
         </li>
       </ul>

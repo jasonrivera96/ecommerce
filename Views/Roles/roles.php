@@ -84,9 +84,8 @@
 <?php footerAdmin($data); ?>
 
 <script type="text/javascript">
-
     $(document).ready(function() {
-    /* document.addEventListener('DOMContentLoaded', function(){ */
+        /* document.addEventListener('DOMContentLoaded', function(){ */
         var tableRoles;
 
         tableRoles = $('#tableRoles').DataTable({
@@ -154,19 +153,34 @@
             var strDescripcion = document.querySelector('#descripcionRol').value;
             var strEstado = document.querySelector('#estadoRol').value;
 
-            if(strNombre == '' || strDescripcion == '' || strEstado == '' ){
-                swal("Atención","Todos los campos son obligatorios.","error");
+            if (strNombre == '' || strDescripcion == '' || strEstado == '') {
+                swal("Atención", "Todos los campos son obligatorios.", "error");
                 return false;
             }
 
-            var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject ('Microsoft.XMLHTTP');
-            var ajaxUrl = base_url + '/Roles/setRol';
+            var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+            var ajaxUrl = base_url + '/Roles/insertRol';
             var formData = new FormData(formRol);
             request.open("POST", ajaxUrl, true);
             request.send(formData);
-            request.onreadystatechange = function(){
-                if(request.readyState == 4 && request.status == 200){
-                    console.log(request.responseText);
+            request.onreadystatechange = function() {
+                if (request.readyState == 4 && request.status == 200) {
+
+                    var objData = JSON.parse(request.responseText);
+
+                    if (objData.status) {
+                        $('#modalCrearRol').modal("hide");
+                        formRol.reset();
+                        swal("Roles de Usuario", objData.msg, "success");
+                        tableRoles.ajax.reload();
+                        /* tableRoles.api().ajax.reload(function(){
+                            fntPermisos();
+                            fntEditarRol();
+                            fntEliminarRol();
+                        }); */
+                    } else {
+                        swal("Error", objData.msg, "error");
+                    }
                 }
             }
         }

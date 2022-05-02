@@ -40,9 +40,33 @@
             die();
         }
 
-        public function setRol()
+        public function insertRol()
         {
-            imprimir($_POST);
+            $nombreRol = strClean($_POST['nombreRol']);
+            $descripcionRol = strClean($_POST['descripcionRol']);
+            $estadoRol = strClean($_POST['estadoRol']);
+
+            $request_rol = $this->model->insertRol($nombreRol, $descripcionRol, $estadoRol);
+
+            if($request_rol > 0){
+                $arrResponse = array(
+                    'status'    => true,
+                    'msg'       => 'Datos guardados correctamente.'
+                );
+            }else if($request_rol == 'exist'){
+                $arrResponse = array(
+                    'status'    => false,
+                    'msg'       => '¡Atención! Este Rol ya existe.'
+                );
+            }else{
+                $arrResponse = array(
+                    'status'    => false,
+                    'msg'       => 'No se almacenaron los datos.'
+                );
+            }
+
+            echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
+            die();
         }
 
 	}

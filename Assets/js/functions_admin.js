@@ -1,1 +1,0 @@
-alert("functions_admin.js Importado en el footer exitosamente.");
